@@ -1,17 +1,11 @@
 package ru.geekbrains.homework7.Server.service;
-
-<<<<<<< HEAD
-=======
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
->>>>>>> AuthbaseService
 import java.util.ArrayList;
 import java.util.List;
 
 public class BaseAuthService implements AuthService {
-<<<<<<< HEAD
-
     private class Entry {
         private String login;
         private String pass;
@@ -48,14 +42,10 @@ public class BaseAuthService implements AuthService {
         }
         return null;
     }
-
 }
-
-=======
     private Map<String, User> users = new Hashmap<>();
     private static Connection connection;
     private static Statement stmp;
-
 
     public BaseAuthService() {
 //        users.put("nick1", new User("login1", "pass1", "Misha"));
@@ -139,5 +129,3 @@ public class BaseAuthService implements AuthService {
     }
 
 
-//
->>>>>>> AuthbaseService
