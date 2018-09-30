@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyServer {
+public class MyServer implements Serializable {
 
     private ServerSocket server;
     private List<ClientHandler> clients;
@@ -58,7 +58,7 @@ public class MyServer {
         }
     }
 
-    public synchronized void sendMsgToClient(
+    public synchronized void sendMsgToClient implements Serializable(
             ClientHandler from,
             String nickTo,
             String msg
@@ -73,7 +73,7 @@ public class MyServer {
         from.sendMsg("Участника с ником " + nickTo + " нет в чат-комнате");
     }
 
-    public synchronized void broadcastClientList() {
+    public synchronized void broadcastClientList() implements Serializable {
         StringBuilder sb = new StringBuilder("/clients ");
         for (ClientHandler o : clients) {
             sb.append(o.getName() + " ");
@@ -99,7 +99,7 @@ public class MyServer {
         return false;
     }
 
-    public synchronized void broadcastMsg(String msg) {
+    public synchronized void broadcastMsg(String msg) implements Serializable {
         for (ClientHandler o : clients) {
             o.sendMsg(msg);
         }

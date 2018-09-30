@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class ClientHandler {
+public class ClientHandler implements Serializable {
 
     private MyServer myServer;
     private Socket socket;
@@ -13,11 +13,11 @@ public class ClientHandler {
     private DataOutputStream out;
     private String name;
 
-    public String getName() {
+    public String getName() implements Serializable {
         return name;
     }
 
-    public ClientHandler(MyServer myServer, Socket socket) {
+    public ClientHandler(MyServer myServer, Socket socket) implements Serializable {
         try {
             this.myServer = myServer;
             this.socket = socket;
@@ -74,7 +74,7 @@ public class ClientHandler {
         }
     }
 
-    public void sendMsg(String msg) {
+    public void sendMsg(String msg) implements Serializable {
         try {
             out.writeUTF(msg);
         } catch (IOException e) {

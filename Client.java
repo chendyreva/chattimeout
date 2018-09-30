@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Client extends JFrame {
+public class Client extends JFrame implements Serializable {
 
     public static void main(String[] args) {
         new Client();
@@ -82,7 +82,7 @@ public class Client extends JFrame {
         bottomPanel.add(jtf, BorderLayout.CENTER);
         jbSend.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) implements Serializable {
                 if (!jtf.getText().trim().isEmpty()) {
                     sendMsg();
                     jtf.grabFocus();
@@ -132,7 +132,7 @@ public class Client extends JFrame {
         }
     }
 
-    public void sendMsg() {
+    public void sendMsg() implements Serializable {
         try {
             out.writeUTF(jtf.getText());
             jtf.setText("");

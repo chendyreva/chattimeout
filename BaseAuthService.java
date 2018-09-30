@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BaseAuthService implements AuthService {
+public class BaseAuthService implements AuthService implements Serializable {
     private class Entry {
         private String login;
         private String pass;
