@@ -21,8 +21,26 @@ public class MyServer implements Serializable {
 
     private final int PORT = 8189;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) implements Serializable {
         new MyServer();
+        try {
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(os);
+            Integer integerSave = new Integer(100);
+            oos.writeObject(integerSave);
+            byte[] arr = os.toByteArray();
+            os.close();
+            oos.close();
+            ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(is);
+            Integer integerRead = (Integer)ois.readObject();
+            is.close();
+            ois.close();
+            System.out.println("Written: " + integerSave + ", Read: " + integerRead);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public MyServer() {
