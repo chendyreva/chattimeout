@@ -126,6 +126,9 @@ public class MyServer implements Serializable {
             o.sendMsg(msg);
         }
     }
+    public void excecute(Runnable task) {
+        executor.submit(task);
+    }
 
 }
 
