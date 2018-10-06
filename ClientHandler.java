@@ -26,11 +26,6 @@ public class ClientHandler implements Serializable {
             this.name = "";
             new Thread(() -> {
                 try {
-                    channel = ChannelBase.of(socket);
-                    server.execute(this::process);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                     while (true) { // цикл авторизации
                         String str = in.readUTF();
                         if (str.startsWith("/auth")) {
