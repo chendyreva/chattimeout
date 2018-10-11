@@ -63,13 +63,13 @@ public class MyServer implements Serializable {
             authService.start();
             clients = new ArrayList<>();
             while (true) {
-                System.out.println("Сервер ожидает подключения...");
+                log("Сервер ожидает подключения...");
                 socket = server.accept();
-                System.out.println("Клиент подключился");
+                log("Клиент подключился");
                 new ClientHandler(this, socket);
             }
         } catch (IOException e) {
-            System.out.println("Ошибка при работе сервера");
+            log("Ошибка при работе сервера");
         } finally {
             try {
                 server.close();
