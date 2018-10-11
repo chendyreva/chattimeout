@@ -39,13 +39,13 @@ public class ClientHandler implements Serializable {
                                     myServer.getAuthService().getNickByLoginPass(parts[1], parts[2]);
                             if (nick != null) {
                                 if (!myServer.isNickBusy(nick)) {
-                                    sendMsg("/authok " + nick);
+                                    log("/authok " + nick);
                                     name = nick;
                                     myServer.subscribe(this);
                                     break;
-                                } else sendMsg("Учетная запись уже используется");
+                                } else log("Учетная запись уже используется");
                             } else {
-                                sendMsg("Неверные логин/пароль");
+                                log("Неверные логин/пароль");
                             }
                         }
                     }

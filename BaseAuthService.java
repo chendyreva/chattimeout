@@ -55,7 +55,7 @@ public class BaseAuthService implements AuthService implements Serializable {
 //        users.put("nick3", new User("login3", "pass3", "Liza"));
         try {
             connect();
-            String sqlQuery = "SELECT login, pass, nick FROM users;";
+            log( "SELECT login, pass, nick FROM users;");
             ResultSet rs = stmp.executeQuery(sqlQuerry);
             while (rs.next()) {
                 String login = rs.getString(1);
@@ -77,7 +77,7 @@ public class BaseAuthService implements AuthService implements Serializable {
     public void changeLogin(String login, String nick) {
         try{
             connect();
-            stmp.execute("UPDATE users SET login=" + login + " WHERE nick = " +nick);
+            log.execute("UPDATE users SET login=" + login + " WHERE nick = " +nick);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -111,7 +111,7 @@ public class BaseAuthService implements AuthService implements Serializable {
             User user = new User(login, password, nick);
             if(users.containsKey(nick)) {
                 users.get(nick).setActive(true);
-                System.out.println("User with nick " + nick + "already exist");
+                log("User with nick " + nick + "already exist");
             } else {
                 users.put(nick, user);
                 persist(user);
@@ -121,7 +121,7 @@ public class BaseAuthService implements AuthService implements Serializable {
         private void persist(User user) {
             try{
                 connect();
-                stmp.execute("INSERT INTO users (login, pass, nick") VALUES ("
+                log.execute("INSERT INTO users (login, pass, nick") VALUES ("
                         + user.getLogin() + ", "
                         +  user.getPassword() + ", " + user.getNickname() + " )");
             } catch (ClassNotFoundException | SQLException e) {

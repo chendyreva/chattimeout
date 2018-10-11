@@ -137,7 +137,7 @@ public class Client extends JFrame implements Serializable {
             out.writeUTF(jtf.getText());
             jtf.setText("");
         } catch (IOException e) {
-            System.out.println("Ошибка отправки сообщения");
+            log("Ошибка отправки сообщения");
         }
     }
 
